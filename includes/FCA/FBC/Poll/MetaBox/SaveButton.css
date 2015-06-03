@@ -1,0 +1,11 @@
+.fca_fbc_poll_meta_box_save_button .hndle,
+.fca_fbc_poll_meta_box_save_button .handlediv {
+	background: red;
+	display: none;
+}
+
+.fca_fbc_poll_meta_box_save_button .inside {
+	margin: 0 !important;
+	padding: 12px;
+}
+
