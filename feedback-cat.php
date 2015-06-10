@@ -20,17 +20,17 @@ define( 'FCA_FBC_PLUGIN_URL', plugins_url( '', __FILE__ ) );
 define( 'FCA_FBC_PLUGIN_NAME', $fca_fbc_plugin_data['Name'] );
 
 function fca_fbc_init() {
-	require_once FCA_FBC_LIB_DIR . '/skelet/core/lib/K/K.php';
-
-	require_once FCA_FBC_INCLUDES_DIR . '/FCA/Media.php';
-	FCA_Media::$includes_dir = FCA_FBC_INCLUDES_DIR;
-	FCA_Media::$plugin_url   = FCA_FBC_PLUGIN_URL;
+	if ( is_admin() ) {
+		require_once FCA_FBC_INCLUDES_DIR . '/FCA/FBC/Poll/Admin/Component.php';
+		$component = FCA_FBC_Poll_Admin_Component::get_instance();
+	} else {
+		require_once FCA_FBC_INCLUDES_DIR . '/FCA/FBC/Poll/FrontEnd/Component.php';
+		$component = FCA_FBC_Poll_FrontEnd_Component::get_instance();
+	}
 
 	require_once FCA_FBC_INCLUDES_DIR . '/FCA/ComponentManager.php';
 	$component_manager = FCA_ComponentManager::get_instance();
-
-	require_once FCA_FBC_INCLUDES_DIR . '/FCA/FBC/Poll/Component.php';
-	$component_manager->register( FCA_FBC_Poll_Component::get_instance() );
+	$component_manager->register( $component );
 
 	if ( is_plugin_active( plugin_basename( __FILE__ ) ) ) {
 		$component_manager->run_stage( FCA_ComponentManager::STAGE_INIT );

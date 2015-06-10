@@ -12,7 +12,7 @@ class FCA_ComponentManager {
 	private $registered_components = array();
 
 	/**
-	 * @return self
+	 * @return FCA_ComponentManager
 	 */
 	public static function get_instance() {
 		require_once FCA_FBC_INCLUDES_DIR . '/functions.php';

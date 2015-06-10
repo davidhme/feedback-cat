@@ -1,0 +1,162 @@
+@import "Themes/Dark";
+
+div.fca_fbc_poll_frontend_component {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 50px;
+	color: $foreground-color;
+	font-family: $font-family;
+	font-size: $font-size;
+	cursor: default;
+
+	div.fca_fbc_poll_frontend_component_handle_container {
+		text-align: right;
+	}
+
+	div.fca_fbc_poll_frontend_component_handle {
+		background: $background-color;
+		display: inline-block;
+		padding: 3px 15px;
+		width: 15px;
+		text-align: center;
+		margin-right: 15px;
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+		cursor: pointer;
+	}
+
+	div.fca_fbc_poll_frontend_component_handle i.fa {
+		font-size: 18px;
+	}
+
+	div.fca_fbc_poll_frontend_component_top {
+		background: $background-color;
+		height: 5px;
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+	}
+
+	div.fca_fbc_poll_frontend_component_content {
+		background: $background-color;
+		padding: $spacing-large;
+
+		div.fca_fbc_poll_frontend_component_question {
+			div.fca_fbc_poll_frontend_component_answer {
+				margin: $spacing-large 0;
+				max-width: $max-width;
+
+				div.fca_fbc_poll_frontend_component_choice {
+					display: table;
+					width: 100%;
+					background: $choice-background-color;
+					border-radius: $border-radius;
+					margin-bottom: $spacing-small;
+					cursor: pointer;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+
+					div.fca_fbc_poll_frontend_component_choice_checkbox_container,
+					div.fca_fbc_poll_frontend_component_choice_text_container {
+						padding: 7px 4px;
+						display: table-cell;
+						vertical-align: middle;
+					}
+
+					div.fca_fbc_poll_frontend_component_choice_checkbox_container {
+						width: 1px;
+					}
+
+					div.fca_fbc_poll_frontend_component_choice_text_container {
+						padding-right: $spacing-large;
+					}
+
+					div.fca_fbc_poll_frontend_component_choice_checkbox {
+						display: inline-block;
+						width: $choice-size;
+						height: $choice-size;
+						border: 2px solid $choice-checkbox-color;
+						border-radius: 50%;
+
+						i.fa {
+							width: 100%;
+							line-height: $choice-size;
+							text-align: center;
+							color: $choice-checkbox-color;
+							visibility: hidden;
+						}
+					}
+
+					div.fca_fbc_poll_frontend_component_choice_text {
+						display: inline;
+					}
+
+					&.fca_fbc_poll_frontend_component_choice_checked {
+						background-color: $choice-checked-background-color;
+
+						div.fca_fbc_poll_frontend_component_choice_checkbox i.fa {
+							visibility: visible;
+						}
+					}
+				}
+
+				div.fca_fbc_poll_frontend_component_long {
+					textarea {
+						width: ($max-width - $spacing-large - $spacing-small + 2);
+						height: 80px;
+						border: 1px solid #fff;
+						border-radius: $border-radius;
+						padding: $spacing-small;
+						font-family: $font-family;
+						font-size: $font-size;
+						outline: none;
+						background: #fff;
+					}
+				}
+			}
+		}
+
+		div.fca_fbc_poll_frontend_component_text {
+			max-width: $max-width;
+			text-align: center;
+		}
+
+		div.fca_fbc_poll_frontend_component_buttons {
+			text-align: right;
+
+			div.fca_fbc_poll_frontend_component_button {
+				display: inline-block;
+				padding: $spacing-small ($spacing-small * 3);
+				border-radius: $border-radius;
+
+				&.fca_fbc_poll_frontend_component_button_enabled {
+					background: $button-enabled-background-color;
+					cursor: pointer;
+				}
+
+				&.fca_fbc_poll_frontend_component_button_disabled {
+					background: $button-disabled-background-color;
+				}
+
+				i.fa {
+					font-size: 16px;
+					margin-left: $spacing-small;
+				}
+			}
+		}
+
+		div.fca_fbc_poll_frontend_component_message {
+			display: none;
+
+			div.fca_fbc_poll_frontend_component_text {
+				margin-bottom: $spacing-large;
+			}
+
+			div.fca_fbc_poll_frontend_component_buttons {
+				text-align: center;
+			}
+		}
+	}
+}

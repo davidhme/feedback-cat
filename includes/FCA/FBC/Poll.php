@@ -3,16 +3,14 @@
 class FCA_FBC_Poll {
 	const NUMBER_OF_CHOICES = 4;
 
-	const META_KEY = 'fca_fbc_meta';
-
-	const FIELD_QUESTION = 'question';
-	const FIELD_QUESTION_TYPE = 'question_type';
-	const FIELD_CHOICES = 'choices';
-	const FIELD_CHOICE_STATES = 'choice_states';
-	const FIELD_THANK_YOU_MESSAGE = 'thank_you_message';
-	const FIELD_STATUS = 'status';
-	const FIELD_DISPLAY_FREQUENCY = 'display_frequency';
-	const FIELD_TIME_ON_PAGE = 'time_on_page';
+	const FIELD_QUESTION = 'poll_question';
+	const FIELD_QUESTION_TYPE = 'poll_question_type';
+	const FIELD_CHOICES = 'poll_choices';
+	const FIELD_CHOICE_STATES = 'poll_choice_states';
+	const FIELD_THANK_YOU_MESSAGE = 'poll_thank_you_message';
+	const FIELD_STATUS = 'poll_status';
+	const FIELD_DISPLAY_FREQUENCY = 'poll_display_frequency';
+	const FIELD_TIME_ON_PAGE = 'poll_time_on_page';
 
 	const TYPE_LONG = 'long';
 	const TYPE_CHOICE = 'choice';
@@ -23,9 +21,17 @@ class FCA_FBC_Poll {
 	const FREQUENCY_MONTH = 'month';
 	const FREQUENCY_ONCE = 'once';
 
+	const STATUS_INACTIVE = 0;
+	const STATUS_ACTIVE = 1;
+
 	private static $types = array(
 		self::TYPE_LONG   => 'Long Text Answer',
 		self::TYPE_CHOICE => 'Multiple Choice'
+	);
+
+	private static $statuses = array(
+		self::STATUS_INACTIVE => 'Inactive',
+		self::STATUS_ACTIVE   => 'Active'
 	);
 
 	private static $display_frequencies = array(
@@ -46,6 +52,13 @@ class FCA_FBC_Poll {
 	/**
 	 * @return array
 	 */
+	public static function get_statuses() {
+		return self::$statuses;
+	}
+
+	/**
+	 * @return array
+	 */
 	public static function get_display_frequencies() {
 		return self::$display_frequencies;
 	}
@@ -55,7 +68,7 @@ class FCA_FBC_Poll {
 	 *
 	 * @return array
 	 */
-	public static function cast_fields( $fields ) {
+	public static function prepare( $fields ) {
 		if ( ! empty( $fields[ self::FIELD_CHOICE_STATES ] ) ) {
 			foreach ( $fields[ self::FIELD_CHOICE_STATES ] as $index => $value ) {
 				$fields[ self::FIELD_CHOICE_STATES ][ $index ] = $value === 'on';
@@ -66,6 +79,10 @@ class FCA_FBC_Poll {
 			if ( array_key_exists( $key, $fields ) ) {
 				$fields[ $key ] = (int) $fields[ $key ];
 			}
+		}
+
+		if ( $fields[ self::FIELD_TIME_ON_PAGE ] < 0 ) {
+			$fields[ self::FIELD_TIME_ON_PAGE ] = 0;
 		}
 
 		return $fields;

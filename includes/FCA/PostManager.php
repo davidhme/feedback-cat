@@ -14,7 +14,7 @@ class FCA_PostManager {
 	private $post_type;
 
 	/**
-	 * @return self
+	 * @return FCA_PostManager
 	 */
 	public static function get_instance() {
 		require_once FCA_FBC_INCLUDES_DIR . '/functions.php';

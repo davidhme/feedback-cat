@@ -4,6 +4,14 @@ class FCA_Form {
 	protected $data;
 
 	/**
+	 * @var FCA_Loader
+	 */
+	private $loader;
+
+	public function __construct() {
+	}
+
+	/**
 	 * @param string $fields
 	 * @param array $attributes
 	 *
@@ -36,6 +44,8 @@ class FCA_Form {
 	 * @return string
 	 */
 	public function make_field( $type, $name, $label = '', $content = array(), $attributes = array() ) {
+		$this->get_loader()->load( FCA_FBC_Loader::LIB_SKELET_FORMS );
+
 		if ( ! empty( $content['after_label'] ) ) {
 			$label .= $content['after_label'];
 		}
@@ -78,12 +88,6 @@ class FCA_Form {
 			'</label>';
 	}
 
-	private function enqueue_media() {
-		require_once dirname( __FILE__ ) . '/Media.php';
-
-		FCA_Media::get_instance()->enqueue( __FILE__ );
-	}
-
 	/**
 	 * @param string $key
 	 * @param mixed $default
@@ -122,5 +126,23 @@ class FCA_Form {
 		}
 
 		return ! is_null( $value );
+	}
+
+	private function enqueue_media() {
+		$this->get_loader()->load( __FILE__ );
+	}
+
+	/**
+	 * @return FCA_Loader
+	 */
+	public function get_loader() {
+		return $this->loader;
+	}
+
+	/**
+	 * @param FCA_Loader $loader
+	 */
+	public function set_loader( $loader ) {
+		$this->loader = $loader;
 	}
 }
