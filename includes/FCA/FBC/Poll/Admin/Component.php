@@ -51,17 +51,14 @@ class FCA_FBC_Poll_Admin_Component extends FCA_FBC_Poll_Component {
 		require_once dirname( __FILE__ ) . '/MetaBox/Builder.php';
 		require_once dirname( __FILE__ ) . '/MetaBox/DisplaySettings.php';
 
-		$save_button_top = new FCA_FBC_Poll_Admin_MetaBox_SaveButton();
-		$save_button_top->register();
-
 		$builder = new FCA_FBC_Poll_Admin_MetaBox_Builder();
 		$builder->register();
 
 		$display_settings = new FCA_FBC_Poll_Admin_MetaBox_DisplaySettings();
 		$display_settings->register();
 
-		$save_button_bottom = new FCA_FBC_Poll_Admin_MetaBox_SaveButton();
-		$save_button_bottom->register();
+		$save_button = new FCA_FBC_Poll_Admin_MetaBox_SaveButton();
+		$save_button->register();
 	}
 
 	public function after_save( $poll_id ) {
