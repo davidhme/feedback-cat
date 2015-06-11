@@ -19,6 +19,6 @@ class FCA_FBC_Poll_Admin_MetaBox_Builder extends FCA_FBC_Poll_Admin_FormMetaBox 
 	}
 
 	public function on_display() {
-		$this->enqueue_class_file( 'js' );
+		$this->enqueue_class_file();
 	}
 }

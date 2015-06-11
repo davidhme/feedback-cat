@@ -45,6 +45,9 @@ jQuery( function( $ ) {
 	};
 
 	var on_question_type_change = function() {
+		$( '.fca_fbc_poll_question_type_info' ).hide();
+		$( '#fca_fbc_poll_question_type_info_' + $question_type.val() ).show();
+
 		if ( $question_type.val() === 'choice' ) {
 			show_choices();
 		} else {

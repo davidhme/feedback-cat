@@ -32,7 +32,8 @@ class FCA_FBC_Poll_Admin_MetaBox_BuilderForm extends FCA_FBC_Poll_Admin_Form {
 		$key = FCA_FBC_Poll::FIELD_QUESTION;
 
 		return $this->make_field( 'textarea', $key, 'Question', array(
-			'value' => $this->get_data( $key, '' )
+			'value'         => $this->get_data( $key, '' ),
+			'after_content' => $this->make_info( 'The question you’re asking your visitors.' )
 		), array(
 			'placeholder' => 'Was this blog post informative?'
 		) );
@@ -48,11 +49,30 @@ class FCA_FBC_Poll_Admin_MetaBox_BuilderForm extends FCA_FBC_Poll_Admin_Form {
 		$first_type = current( $types );
 
 		return $this->make_field( 'select', $key, 'Question Type', array(
-			'options'  => $types,
-			'selected' => $this->get_data( $key, $first_type )
+			'options'       => $types,
+			'selected'      => $this->get_data( $key, $first_type ),
+			'after_content' => $this->make_info( $this->make_field_question_type_info() )
 		), array(
 			'id' => 'fca_fbc_' . $key
 		) );
+	}
+
+	/**
+	 * @return string
+	 */
+	private function make_field_question_type_info() {
+		$choice_range = FCA_FBC_Poll::MINIMUM_NUMBER_OF_CHOICES . '-' . FCA_FBC_Poll::NUMBER_OF_CHOICES;
+		$key          = FCA_FBC_Poll::FIELD_QUESTION_TYPE;
+		$prefix  = 'fca_fbc_' . $key . '_info';
+
+		return
+			'<span class="' . $prefix . '" id="' . $prefix . '_' . FCA_FBC_Poll::TYPE_LONG . '">' .
+			'Let visitors answer using a textbox.' .
+			'</span>' .
+
+			'<span class="' . $prefix . '" id="' . $prefix . '_' . FCA_FBC_Poll::TYPE_CHOICE . '">' .
+			'Let visitors answer using a multiple choice with ' . $choice_range . ' options.' .
+			'</span>';
 	}
 
 	/**
@@ -75,7 +95,7 @@ class FCA_FBC_Poll_Admin_MetaBox_BuilderForm extends FCA_FBC_Poll_Admin_Form {
 			if ( $has_states ) {
 				$state = $states[ $i ] ? 'on' : 'off';
 			} else {
-				$state = $i > 1 ? 'off' : 'on';
+				$state = $i > FCA_FBC_Poll::MINIMUM_NUMBER_OF_CHOICES - 1 ? 'off' : 'on';
 			}
 
 			$name = $this->meta_field( $key_states );

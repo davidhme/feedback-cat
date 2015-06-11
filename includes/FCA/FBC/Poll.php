@@ -1,6 +1,7 @@
 <?php
 
 class FCA_FBC_Poll {
+	const MINIMUM_NUMBER_OF_CHOICES = 2;
 	const NUMBER_OF_CHOICES = 4;
 
 	const FIELD_QUESTION = 'poll_question';
