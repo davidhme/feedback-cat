@@ -31,7 +31,7 @@ class FCA_FBC_Poll_Admin_MetaBox_DisplaySettingsForm extends FCA_FBC_Poll_Admin_
 			'options'       => FCA_FBC_Poll::get_statuses(),
 			'selected'      => $this->get_data( $key, FCA_FBC_Poll::STATUS_INACTIVE ),
 			'after_content' => $this->make_info(
-				'The ' . $name . ' will not appear on your site if it\'s set to inactive'
+				'The ' . $name . ' will not appear on your site if it\'s set to inactive.'
 			)
 		) );
 	}

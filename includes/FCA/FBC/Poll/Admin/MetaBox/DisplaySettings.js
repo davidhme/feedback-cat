@@ -14,7 +14,7 @@ jQuery( function( $ ) {
 			text = 'immediately';
 		}
 
-		$time_on_page_seconds.text( text );
+		$time_on_page_seconds.text( text + '.' );
 		$time_on_page_seconds_in_field.text( seconds_text );
 	};
 
