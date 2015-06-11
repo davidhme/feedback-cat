@@ -66,7 +66,7 @@ class FCA_FBC_PollManager {
 	/**
 	 * @return array
 	 */
-	private function find_all_posts() {
+	public function find_all_posts() {
 		return get_posts( array(
 			'post_type'      => FCA_FBC_Poll_Component::POST_TYPE,
 			'post_status'    => 'publish',

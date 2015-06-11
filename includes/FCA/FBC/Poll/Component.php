@@ -81,7 +81,7 @@ class FCA_FBC_Poll_Component extends FCA_Component {
 			'has_archive'          => false,
 			'hierarchical'         => false,
 			'menu_position'        => 105,
-			'supports'             => array( 'title' ),
+			'supports'             => array( 'title' => false ),
 			'register_meta_box_cb' => array( $this, 'register_meta_boxes' ),
 			'capability_type'      => 'post',
 			'capabilities'         => array( 'create_posts' => $can_create ),
