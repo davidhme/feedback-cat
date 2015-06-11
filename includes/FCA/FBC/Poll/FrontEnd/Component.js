@@ -11,6 +11,7 @@ jQuery( function( $ ) {
 	var position_down = 'down';
 
 	var animation_speed_poll_move = 150;
+	var animation_speed_open = 300;
 	var animation_speed_close = 250;
 	var initial_position = position_up;
 
@@ -225,7 +226,7 @@ jQuery( function( $ ) {
 		poll_move( $poll, initial_position, false );
 
 		if ( should_animate ) {
-			$poll.hide().css( 'visibility', 'visible' ).fadeIn( animation_speed_poll_move );
+			$poll.hide().css( 'visibility', 'visible' ).fadeIn( animation_speed_open );
 		} else {
 			$poll.css( 'visibility', 'visible' );
 		}
