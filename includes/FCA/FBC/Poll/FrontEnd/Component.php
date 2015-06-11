@@ -226,12 +226,14 @@ class FCA_FBC_Poll_FrontEnd_Component extends FCA_FBC_Poll_Component {
 	 */
 	private function get_scss_compiler() {
 		if ( is_null( $this->scss_compiler ) ) {
-			require_once dirname( __FILE__ ) . '/../../Loader.php';
+			$loader = $this->get_loader();
+
+			$loader->load( FCA_FBC_Loader::LIB_SCSS, 'php' );
 
 			$this->scss_compiler = new scssc();
 			$this->scss_compiler->setImportPaths( array( dirname( __FILE__ ) ) );
 
-			if ( $this->get_loader()->should_compress() ) {
+			if ( $loader->should_compress() ) {
 				$this->scss_compiler->setFormatter( 'scss_formatter_compressed' );
 			} else {
 				$this->scss_compiler->setFormatter( 'scss_formatter' );
