@@ -7,8 +7,12 @@ jQuery( function( $ ) {
 		return;
 	}
 
+	var position_up = 'up';
+	var position_down = 'down';
+
 	var animation_speed_poll_move = 150;
 	var animation_speed_close = 250;
+	var initial_position = position_up;
 
 	var class_component = 'fca_fbc_poll_frontend_component';
 	var class_question = class_component + '_question';
@@ -39,8 +43,6 @@ jQuery( function( $ ) {
 		$( 'i.fa', $element ).attr( 'class', 'fa ' + icon_name );
 	};
 
-	var position_up = 'up';
-	var position_down = 'down';
 	var position_reverse = function( position ) {
 		return position === position_down ? position_up : position_down;
 	};
@@ -82,7 +84,7 @@ jQuery( function( $ ) {
 	};
 
 	var poll_handle_clicked = function( $poll, $handle ) {
-		var current_position = $poll.data( data_position ) || position_down;
+		var current_position = $poll.data( data_position ) || initial_position;
 		var new_position = position_reverse( current_position );
 
 		if ( current_position === position_down ) {
@@ -201,9 +203,11 @@ jQuery( function( $ ) {
 	var poll_setup = function( poll_id, $poll, should_animate, delay_id ) {
 		$( document.body ).append( $poll );
 
-		$( '.' + class_handle, $poll ).click( function() {
-			poll_handle_clicked( $poll, $( this ) );
+		var $handle = $( '.' + class_handle, $poll );
+		$handle.click( function() {
+			poll_handle_clicked( $poll, $handle );
 		} );
+		icon_set( $handle, initial_position === position_up ? icon_down : icon_up );
 
 		$( '.' + class_button_send, $poll ).click( function() {
 			poll_button_send_clicked( poll_id, $poll, delay_id );
@@ -218,7 +222,7 @@ jQuery( function( $ ) {
 
 		$poll.css( 'visibility', 'hidden' ).show();
 		$poll.data( data_height, $( '.' + class_content, $poll ).outerHeight() );
-		poll_move( $poll, position_down, false );
+		poll_move( $poll, initial_position, false );
 
 		if ( should_animate ) {
 			$poll.hide().css( 'visibility', 'visible' ).fadeIn( animation_speed_poll_move );
