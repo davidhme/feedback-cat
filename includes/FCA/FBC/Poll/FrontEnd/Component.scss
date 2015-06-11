@@ -133,6 +133,7 @@ div.fca_fbc_poll_frontend_component {
 
 				&.fca_fbc_poll_frontend_component_button_enabled {
 					background: $button-enabled-background-color;
+					color: $button-enabled-foreground-color;
 					cursor: pointer;
 				}
 

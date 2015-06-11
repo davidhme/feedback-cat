@@ -8,4 +8,5 @@ $choice-checked-background-color: lighten($background-color, 24%);
 $choice-checkbox-color: lighten($background-color, 64%);
 
 $button-enabled-background-color: #e54400;
+$button-enabled-foreground-color: $foreground-color;
 $button-disabled-background-color: lighten($background-color, 8%);
