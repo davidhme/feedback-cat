@@ -9,6 +9,7 @@ div.fca_fbc_poll_frontend_component {
 	font-family: $font-family;
 	font-size: $font-size;
 	cursor: default;
+	z-index: 999999980;
 
 	div.fca_fbc_poll_frontend_component_handle_container {
 		text-align: right;
