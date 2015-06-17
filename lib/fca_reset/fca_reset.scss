@@ -1,0 +1,32 @@
+@mixin fca_reset() {
+	display: block;
+	margin: 0;
+	padding: 0;
+	line-height: normal;
+	font-size: 14px;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-indent: 0;
+	text-shadow: none;
+	text-decoration: none;
+	text-transform: none;
+	white-space: normal;
+	width: auto;
+	height: auto;
+	background-image: none;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	box-sizing: border-box;
+	transition: none;
+	outline: none;
+	-webkit-transition: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+@mixin fca_reset_font_properties() {
+	color: #000;
+	font-family: "Open Sans", sans-serif;
+	font-weight: normal;
+}

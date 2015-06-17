@@ -1,0 +1,13 @@
+div.fca_fbc_poll_frontend_component_long {
+	textarea {
+		width: ($max-width - $spacing-large - $spacing-small + 2);
+		height: 80px;
+		border: 1px solid #fff;
+		border-radius: $border-radius;
+		padding: $spacing-small;
+		font-family: $font-family;
+		font-size: $font-size;
+		outline: none;
+		background: #fff;
+	}
+}

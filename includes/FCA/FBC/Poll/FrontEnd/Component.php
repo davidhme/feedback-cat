@@ -9,16 +9,6 @@ class FCA_FBC_Poll_FrontEnd_Component extends FCA_FBC_Poll_Component {
 	private $mustache_engine = null;
 
 	/**
-	 * @var scssc
-	 */
-	private $scss_compiler = null;
-
-	/**
-	 * @var bool
-	 */
-	private $should_compile_scss = null;
-
-	/**
 	 * @var array
 	 */
 	private $polls = null;
@@ -48,10 +38,7 @@ class FCA_FBC_Poll_FrontEnd_Component extends FCA_FBC_Poll_Component {
 
 		$this->get_loader()->load_all( $libraries );
 
-		if ( $this->should_compile_scss() ) {
-			$this->compile_scss();
-		}
-
+		$this->compile_scss();
 		$this->handle_submit();
 	}
 
@@ -66,16 +53,10 @@ class FCA_FBC_Poll_FrontEnd_Component extends FCA_FBC_Poll_Component {
 	}
 
 	private function compile_scss() {
-		$this->get_loader()->load( FCA_FBC_Loader::LIB_SCSS, 'php' );
+		require_once FCA_FBC_INCLUDES_DIR . '/FCA/SCSS/Compiler.php';
 
-		file_put_contents(
-			$this->get_css_file_path(),
-
-			"/* Generated file. Do not edit. */\n\n" .
-			$this->get_scss_compiler()->compile( file_get_contents( $this->get_scss_file_path() ) )
-		);
-
-		$this->should_compile_scss = false;
+		$compiler = new FCA_SCSS_Compiler( $this->get_scss_file_path() );
+		$compiler->compile_to_file( $this->get_css_file_path() );
 	}
 
 	/**
@@ -205,42 +186,6 @@ class FCA_FBC_Poll_FrontEnd_Component extends FCA_FBC_Poll_Component {
 		}
 
 		return $this->mustache_engine;
-	}
-
-	/**
-	 * @return bool
-	 */
-	private function should_compile_scss() {
-		if ( is_null( $this->should_compile_scss ) ) {
-			$scss = $this->get_scss_file_path();
-			$css  = $this->get_css_file_path();
-
-			$this->should_compile_scss = ! file_exists( $css ) || filemtime( $scss ) > filemtime( $css );
-		}
-
-		return $this->should_compile_scss;
-	}
-
-	/**
-	 * @return scssc
-	 */
-	private function get_scss_compiler() {
-		if ( is_null( $this->scss_compiler ) ) {
-			$loader = $this->get_loader();
-
-			$loader->load( FCA_FBC_Loader::LIB_SCSS, 'php' );
-
-			$this->scss_compiler = new scssc();
-			$this->scss_compiler->setImportPaths( array( dirname( __FILE__ ) ) );
-
-			if ( $loader->should_compress() ) {
-				$this->scss_compiler->setFormatter( 'scss_formatter_compressed' );
-			} else {
-				$this->scss_compiler->setFormatter( 'scss_formatter' );
-			}
-		}
-
-		return $this->scss_compiler;
 	}
 
 	/**
