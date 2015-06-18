@@ -33,7 +33,6 @@ jQuery( function( $ ) {
 		}
 
 		$( '.fca_fbc_poll_choice_toggle', $choices ).each( function( index ) {
-			console.log( index );
 			update_toggle( $( this ), index );
 		} );
 
