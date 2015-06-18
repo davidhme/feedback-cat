@@ -4,7 +4,11 @@ jQuery( function( $ ) {
 
 	var choices_prepared = false;
 
-	var update_toggle = function( $choice_toggle ) {
+	var update_toggle = function( $choice_toggle, index ) {
+		if ( index === 0 || index === 1 ) {
+			return;
+		}
+
 		var $form_field_content = $choice_toggle.parent().next( '.fca_form_field_content' );
 		var $choice_state = $choice_toggle.next( '.fca_fbc_poll_choice_state' );
 
@@ -28,8 +32,9 @@ jQuery( function( $ ) {
 			return;
 		}
 
-		$( '.fca_fbc_poll_choice_toggle', $choices ).each( function() {
-			update_toggle( $( this ) );
+		$( '.fca_fbc_poll_choice_toggle', $choices ).each( function( index ) {
+			console.log( index );
+			update_toggle( $( this ), index );
 		} );
 
 		choices_prepared = true;
