@@ -39,7 +39,6 @@ This plugin is a small side-project (we have a bunch of (commercial plugins)[htt
 2. A longform text feedback / survey form
 3. Confirmation screen
 4. Our simple 1-page user interface
-5. 
 
 == Installation ==
 
