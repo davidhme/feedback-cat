@@ -25,6 +25,7 @@ class FCA_FBC_Poll_Component extends FCA_Component {
 
 		if ( is_admin() ) {
 			add_action( 'admin_head', array( $this, 'head' ) );
+			add_action( 'admin_footer', array( $this, 'footer' ) );
 		} else {
 			add_action( 'wp_head', array( $this, 'head' ) );
 		}
@@ -47,6 +48,9 @@ class FCA_FBC_Poll_Component extends FCA_Component {
 		}
 
 		echo '<script>fca_fbc = ' . $fca_fbc . ';</script>';
+	}
+
+	public function footer() {
 	}
 
 	public function register_post_type() {

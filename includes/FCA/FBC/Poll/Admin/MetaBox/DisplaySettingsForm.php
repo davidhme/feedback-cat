@@ -48,7 +48,7 @@ class FCA_FBC_Poll_Admin_MetaBox_DisplaySettingsForm extends FCA_FBC_Poll_Admin_
 			'options'       => FCA_FBC_Poll::get_display_frequencies(),
 			'default'       => $this->get_data( $key, 'once' ),
 			'after_content' => $this->make_info(
-				'Set how frequently to show the ' . $name . '. ' .
+				'Set how frequently to show the ' . $name . '.<br>' .
 				'(Once the user submits the ' . $name . ', he will never see it again)'
 			)
 		) );

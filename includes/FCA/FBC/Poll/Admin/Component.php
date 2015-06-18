@@ -44,6 +44,16 @@ class FCA_FBC_Poll_Admin_Component extends FCA_FBC_Poll_Component {
 		add_filter( 'enter_title_here', array( $this, 'enter_title_here' ) );
 	}
 
+	public function footer() {
+		parent::footer();
+
+		if ( get_current_screen()->id !== self::POST_TYPE ) {
+			return;
+		}
+
+		$this->display_ad();
+	}
+
 	public function enter_title_here() {
 		return 'Enter Name Here';
 	}
@@ -126,5 +136,12 @@ class FCA_FBC_Poll_Admin_Component extends FCA_FBC_Poll_Component {
 				) )
 			);
 		}
+	}
+
+	private function display_ad() {
+		require_once dirname( __FILE__ ) . '/Ad.php';
+
+		$ad = new FCA_FBC_Poll_Admin_Ad();
+		$ad->display();
 	}
 }
