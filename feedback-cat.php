@@ -2,11 +2,11 @@
 
 /**
  * Plugin Name: Feedback Cat
- * Plugin URI: https://fatcatapps.com/
+ * Plugin URI: https://fatcatapps.com/feedbackcat
  * Version: 1.0
  * Author: Fatcat Apps
- * Author URI: https://fatcatapps.com/
- * Description: Lets you build feedback forms
+ * Author URI: https://fatcatapps.com/feedbackcat
+ * Description: Build onpage survey & feedback forms in minutes.
  */
 
 require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
