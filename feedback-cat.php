@@ -9,7 +9,7 @@
  * Description: Lets you build feedback forms
  */
 
-require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 $fca_fbc_plugin_data = get_plugin_data( __FILE__ );
 
 define( 'FCA_FBC_PLUGIN_FILE', __FILE__ );
