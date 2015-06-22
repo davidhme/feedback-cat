@@ -14,6 +14,11 @@ class FCA_FBC_Poll_FrontEnd_Component extends FCA_FBC_Poll_Component {
 	private $polls = null;
 
 	/**
+	 * @var bool
+	 */
+	private $should_display_polls = null;
+
+	/**
 	 * @return FCA_FBC_Poll_FrontEnd_Component
 	 */
 	public static function get_instance() {
@@ -40,6 +45,12 @@ class FCA_FBC_Poll_FrontEnd_Component extends FCA_FBC_Poll_Component {
 
 		$this->compile_scss();
 		$this->handle_submit();
+	}
+
+	public function head() {
+		if ( $this->should_display_polls() ) {
+			parent::head();
+		}
 	}
 
 	public function populate_fca_fbc() {
@@ -142,12 +153,27 @@ class FCA_FBC_Poll_FrontEnd_Component extends FCA_FBC_Poll_Component {
 	 * @return bool
 	 */
 	private function should_display_polls() {
-		require_once FCA_FBC_INCLUDES_DIR . '/FCA/Detector.php';
+		if ( is_null( $this->should_display_polls ) ) {
+			require_once FCA_FBC_INCLUDES_DIR . '/FCA/Detector.php';
 
-		$detector  = new FCA_Detector();
-		$is_mobile = $detector->is_mobile();
+			$detector  = new FCA_Detector();
+			$is_mobile = $detector->is_mobile();
 
-		return ! $is_mobile && count( $this->get_polls() ) > 0;
+			$should_display = ! $is_mobile && count( $this->get_polls() ) > 0;
+
+			/**
+			 * Override whether polls should appear or not.
+			 *
+			 * @since 1.0
+			 *
+			 * @param bool $should_appear The current value determined by the plugin
+			 */
+			$should_display = apply_filters( 'fca_fbc_should_display_polls', $should_display );
+
+			$this->should_display_polls = $should_display;
+		}
+
+		return $this->should_display_polls;
 	}
 
 	/**
