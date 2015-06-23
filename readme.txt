@@ -1,4 +1,4 @@
-=== Survey ===
+=== Surveys by Feedback Cat ===
 Contributors: davidhme, fatcatapps
 Donate link: https://fatcatapps.com/
 Tags: survey, feedback, poll, survey form, feedback form, qualitative survey
