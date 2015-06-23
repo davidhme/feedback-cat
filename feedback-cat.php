@@ -9,15 +9,12 @@
  * Description: Build onpage survey & feedback forms in minutes.
  */
 
-require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-$fca_fbc_plugin_data = get_plugin_data( __FILE__ );
-
 define( 'FCA_FBC_PLUGIN_FILE', __FILE__ );
 define( 'FCA_FBC_PLUGIN_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
 define( 'FCA_FBC_INCLUDES_DIR', FCA_FBC_PLUGIN_DIR . '/includes' );
 define( 'FCA_FBC_LIB_DIR', FCA_FBC_PLUGIN_DIR . '/lib' );
 define( 'FCA_FBC_PLUGIN_URL', plugins_url( '', __FILE__ ) );
-define( 'FCA_FBC_PLUGIN_NAME', $fca_fbc_plugin_data['Name'] );
+define( 'FCA_FBC_PLUGIN_NAME', 'Feedback Cat' );
 
 function fca_fbc_init() {
 	if ( is_admin() ) {
@@ -32,6 +29,7 @@ function fca_fbc_init() {
 	$component_manager = FCA_ComponentManager::get_instance();
 	$component_manager->register( $component );
 
+	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	if ( is_plugin_active( plugin_basename( __FILE__ ) ) ) {
 		$component_manager->run_stage( FCA_ComponentManager::STAGE_INIT );
 	} else {
