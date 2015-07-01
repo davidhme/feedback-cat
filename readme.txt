@@ -7,7 +7,7 @@ Author URI: https://fatcatapps.com/
 Plugin URI: https://fatcatapps.com/feedbackcat
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,5 +49,8 @@ If you encounter issues, please post them in the support forum.
 
 == Changelog ==
 
-= 1.0 =
+= Surveys by Feedback Cat 1.1 =
+* Fixed "this plugin doesn't have a valid header" - bug
+
+= Surveys by Feedback Cat 1.0 =
 * Initial release
