@@ -7,7 +7,7 @@ Author URI: https://fatcatapps.com/
 Plugin URI: https://fatcatapps.com/feedbackcat
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,9 @@ If you encounter issues, please post them in the support forum.
 3. In your sidebar, click on 'Feedback Cat' to create a new MailChimp form.
 
 == Changelog ==
+
+= Surveys by Feedback Cat 1.2 =
+* Fixed a bug that caused the Thank You Message to always contain "Thanks for answering this poll!", no matter what it was set to in the Poll editor.
 
 = Surveys by Feedback Cat 1.1 =
 * Fixed "this plugin doesn't have a valid header" - bug

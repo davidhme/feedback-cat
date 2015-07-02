@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Feedback Cat
  * Plugin URI: https://fatcatapps.com/feedbackcat
- * Version: 1.1
+ * Version: 1.2
  * Author: Fatcat Apps
  * Author URI: https://fatcatapps.com/feedbackcat
  * Description: Build onpage survey & feedback forms in minutes.
