@@ -6,8 +6,8 @@ Tags: survey, feedback, poll, survey form, feedback form, qualitative survey
 Author URI: https://fatcatapps.com/
 Plugin URI: https://fatcatapps.com/feedbackcat
 Requires at least: 4.0
-Tested up to: 4.2.2
-Stable tag: 1.2
+Tested up to: 4.2.3
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,8 @@ Here are some screenshots to illustrate how our plugin works:
 4. Our simple 1-page user interface
 
 == Changelog ==
+= Surveys by Feedback Cat 1.2.1 =
+* Improved readme.txt - Description
 
 = Surveys by Feedback Cat 1.2 =
 * Fixed a bug that caused the Thank You Message to always contain "Thanks for answering this poll!", no matter what it was set to in the Poll editor.
